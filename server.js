@@ -5,11 +5,17 @@ const app = express();
 const PORT =  3001 || 3002;
 const budgets = require("./models/budget.js");
 const morgan = require("morgan")
+const methodOverride = require("method-override")
+const req = require("express/lib/request")
 
+//Middleware
+app.use(express.urlencoded({extended: false}))
+app.use(morgan("tiny"))
+app.use('/static', express.static('public'))
+app.use(methodOverride("_method"))
 
-
-app.use(express.urlencoded({ extended: false }));
-
+ 
+  
 app.get("/", (req, res) => {
   res.send(budgets);
   res.send("You are home!");

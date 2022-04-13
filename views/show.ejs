@@ -1,12 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta charset="utf-8" />
+    <title>Your page title here :)</title>
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link
+      href="//fonts.googleapis.com/css?family=Raleway:400,300,600"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="stylesheet" href="/static/css/normalize.css" />
+    <link rel="stylesheet" href="/static/css/skeleton.css" />
+
+    <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  </head>
+  <body>
+    <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="container">
+      <h1><%= budget.name %></h1>
+      <a href="/budgets"><button>back</button></a>
+      
+
+      <div class="row">
+        <div class="one columns">Date:</div>
+        <div class="eleven columns"><%= budget.date %></div>
+      </div>
+      <div class="row">
+        <div class="one column">name:</div>
+        <div class="eleven columns"><%= budget.name %></div>
+      </div>
+      <div class="row">
+        <div class="one columns">from:</div>
+        <div class="eleven columns"><%= budget.from %></div>
+      </div>
+      <div class="row">
+        <div class="one columns">amount:</div>
+        <div class="eleven columns"><%= budget.amount %></div>
+      </div>
+      <div class="row">
+        <div class="one columns">tags:</div>
+        <div class="eleven columns"><%= budget.tags %></div>
+      </div>
+      
+
+    <!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  </body>
 </html>
