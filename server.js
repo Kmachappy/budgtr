@@ -2,13 +2,17 @@ require("dotenv").config();
 
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT =  3001 || 3002;
 const budgets = require("./models/budget.js");
+const morgan = require("morgan")
+
+
+
 app.use(express.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {
-  res.send(budget);
-  // res.send("You are home!");
+  res.send(budgets);
+  res.send("You are home!");
 });
 
 app.get("/budgets", (req, res) => {
