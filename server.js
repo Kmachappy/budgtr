@@ -15,11 +15,18 @@ app.use("/static", express.static("public"));
 app.use(methodOverride("_method"));
 
 app.get("/", (req, res) => {
-  res.send("You are home!");
+  res.render("home.ejs");
 });
 
 app.get("/budgets/", (req, res) => {
-  res.render("index.ejs", { allBudgets: budgets });
+  let bankAccount = 0
+   budgets.forEach((amount,index) => {
+    bankAccount += parseInt(amount.amount)
+   });
+  
+  console.log(bankAccount)
+  
+  res.render("index.ejs", { allBudgets: budgets, bankTotal: bankAccount  });
 });
 
 app.get("/budgets/new", (req, res) => {
@@ -34,7 +41,12 @@ app.get("/budgets/:index/edit", (req, res) => {
   res.send("edit");
 });
 
-
+app.post('/budgets', (req, res) => {
+  
+  budgets.push(req.body);
+  console.log(budgets);
+  res.redirect('/budgets');
+});
 
 
 
