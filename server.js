@@ -18,15 +18,22 @@ app.get("/", (req, res) => {
   res.render("home.ejs");
 });
 
-app.get("/budgets/", (req, res) => {
+app.get("/budgets", (req, res) => {
   let bankAccount = 0
-   budgets.forEach((amount,index) => {
+  let color = "" 
+  budgets.forEach((amount,index) => {
     bankAccount += parseInt(amount.amount)
    });
+   if(bankAccount > 0){
+    color = "green"
+   }
+   else color = "red"
+   
+   console.log(color)
   
   console.log(bankAccount)
   
-  res.render("index.ejs", { allBudgets: budgets, bankTotal: bankAccount  });
+  res.render("index.ejs", { allBudgets: budgets, bankTotal: bankAccount, color: color  });
 });
 
 app.get("/budgets/new", (req, res) => {
