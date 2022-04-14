@@ -19,21 +19,15 @@ app.get("/", (req, res) => {
 });
 
 app.get("/budgets", (req, res) => {
-  let bankAccount = 0
-  let color = "" 
-  budgets.forEach((amount,index) => {
-    bankAccount += parseInt(amount.amount)
-   });
-   if(bankAccount > 0){
-    color = "green"
-   }
-   else color = "red"
-   
-   console.log(color)
-  
-  console.log(bankAccount)
-  
-  res.render("index.ejs", { allBudgets: budgets, bankTotal: bankAccount, color: color  });
+  let total = 0;
+  budgets.forEach(data => total += parseInt(data.amount));
+  let color = total > 0 ? "green" : "red";
+
+  res.render("index.ejs", {
+    allBudgets: budgets,
+    bankTotal: total,
+    color: color,
+  });
 });
 
 app.get("/budgets/new", (req, res) => {
@@ -48,15 +42,11 @@ app.get("/budgets/:index/edit", (req, res) => {
   res.send("edit");
 });
 
-app.post('/budgets', (req, res) => {
-  
+app.post("/budgets", (req, res) => {
   budgets.push(req.body);
   console.log(budgets);
-  res.redirect('/budgets');
+  res.redirect("/budgets");
 });
-
-
-
 
 app.listen(PORT, () => {
   console.log(`We are listening on port ${PORT}`);
